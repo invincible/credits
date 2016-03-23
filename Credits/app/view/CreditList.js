@@ -11,7 +11,25 @@ Ext.define('CreditApp.view.CreditList' ,{
             return record.get('status') == 'выдан' ? 'credit-active' : '';
         } 
     },
-     
+    
+    dockedItems: [{
+        xtype: 'toolbar',
+        itemId: 'toolbar',
+        items: [{
+            text: 'Выдать займ',
+            scope: this,
+            action: 'giveCredit'
+        }, {
+            text: 'Просмотр займа',
+            scope: this,
+            action: 'showCredit'
+        }, {
+            text: 'Информация',
+            scope: this,
+            action: 'showInfo'
+        }]
+    }],
+
     //'id','openDate', 'closeDate', 'term', 'summ', 'percent', 'fullSumm', 'status'
     initComponent: function() {
         this.columns = [
@@ -33,21 +51,21 @@ Ext.define('CreditApp.view.CreditList' ,{
                 xtype:'actioncolumn',
                 flex: 1,
                 items: [{
-                    icon: 'styles/icons/print.png',
+                    iconCls: 'icon-print',
                     tooltip: 'Распечатать информацию',
                     padding:  '10 5 3 10',
                     handler: function(grid, rowIndex, colIndex) {
                         this.up('grid').fireEvent('itemprintbuttonclick', grid, rowIndex, colIndex);
                     }
                 },{
-                    icon: 'styles/icons/email_go.png',
+                    iconCls: 'icon-mail',
                     tooltip: 'Посмотреть документы',
                     handler: function(grid, rowIndex, colIndex) {
                         this.up('grid').fireEvent('itemshowbuttonclick', grid, rowIndex, colIndex);
                     },
                     isDisabled: renderBtn
                 },{
-                    icon: 'styles/icons/cross.png',
+                    iconCls: 'icon-del',
                     tooltip: 'Удалить запись',
                     handler: function(grid, rowIndex, colIndex) {
                         this.up('grid').fireEvent('itemdelbuttonclick', grid, rowIndex, colIndex);   

@@ -7,22 +7,33 @@ Ext.define('CreditApp.controller.Credits', {
     init: function() {
         this.control({
             'viewport > creditlist': {
-                itemdblclick: this.showCredit,
+                //itemdblclick: this.showCredit,
                 itemprintbuttonclick: this.onPrint,
                 itemdelbuttonclick: this.onItemDel,
                 itemshowbuttonclick: this.showDocuments
             },
-            'creditwindow button[action=save]': {
+            'toolbar button[action=giveCredit]': {
                 click: this.giveCredit
+            },
+            'toolbar button[action=showCredit]': {
+                click: this.showCredit
+            },
+            'toolbar button[action=showInfo]': {
+                click: this.showInfo
+            },
+            'creditwindow button[action=save]': {
+                click: this.saveCredit
             }
         });
     },
 
-    // Просмотр займ
-    giveCredit: function(button) {
+    // Отправка запроса
+    saveCredit: function(button) {
         var win    = button.up('window'),
             form   = win.down('form'),
-            values = form.getValues();
+            values = form.getValues(true);
+        Ext.Msg.alert('Отправка запроса','Тут отправляем запрос на УРЛ: '+values);
+        /*
         Ext.Ajax.request({
             url: 'app/data/giveCredit.php',
             params: values,
@@ -40,20 +51,25 @@ Ext.define('CreditApp.controller.Credits', {
             failure: function(form, action) {
                 Ext.Msg.alert('Выдать займ','Что-то пошло не так!');
             }
-        });
+        });*/
+    },
+    // Выдать займ
+    giveCredit: function(button) {
+        var view = Ext.widget('creditwindow');        
     },
     // Просмотр займа
-    showCredit: function(grid, record) {
+    showCredit: function(button) {
         var view = Ext.widget('creditwindow');
-        view.down('form').loadRecord(record);
     },
-    // Просмотр займа
+    // Информация
     showInfo: function(button) {
-        
+        var view = Ext.widget('creditwindow');  
     },
+    // Принтер
     onPrint: function(grid,row,col){
         window.open('http://yandex.ru');
     },
+    // Удаление записи
     onItemDel: function(grid,row,col){
         Ext.Msg.confirm('Удаление записи', 'Вы действительно хотите удалить данную запись?', function(btn, text){
             if (btn == 'yes'){
@@ -63,6 +79,7 @@ Ext.define('CreditApp.controller.Credits', {
             }
         });
     },
+    // Список документов
     showDocuments: function(grid,row,col){
         var view = Ext.widget('doclistwindow');
     }

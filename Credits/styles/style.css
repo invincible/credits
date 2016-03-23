@@ -1,4 +1,7 @@
-.save-icon {background:transparent url(icons/save.png) center 0 no-repeat;}
+.icon-save {background:transparent url(icons/save.png) center 0 no-repeat;}
+.icon-print {background:transparent url(icons/print.png) center 0 no-repeat;}
+.icon-mail {background:transparent url(icons/email_go.png) center 0 no-repeat;}
+.icon-del {background:transparent url(icons/cross.png) center 0 no-repeat;}
 .credit-active .x-grid-cell { 
     background-color: #ffe2e2;
 }

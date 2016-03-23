@@ -5,6 +5,7 @@ Ext.define('CreditApp.view.Credit', {
     title: 'Информация о кредите',
     layout: 'fit',
     autoShow: true,
+    modal: true,
  
     initComponent: function() {
         this.items = [{
@@ -17,7 +18,7 @@ Ext.define('CreditApp.view.Credit', {
             }];
         this.buttons = [{
                 text: 'Сохранить',
-                iconCls:'save-icon',
+                iconCls:'icon-save',
                 scope: this,
                 action: 'save'
         }];

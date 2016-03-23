@@ -13,8 +13,11 @@ Ext.define('CreditApp.view.DocList', {
         this.items = [{
             xtype: 'grid',
             border: false,
-            columns: [{ text: 'Документы',  dataIndex: 'doc' }],
-            store: Ext.create('Ext.data.ArrayStore', {'doc':'Первый'})
+            columns: [{ text: 'Документы',  dataIndex: 'doc', flex: 1}],
+            store: Ext.create('Ext.data.ArrayStore', {
+                fields: ['doc'],
+                data: [['Документ 1'], ['Документ 2'], ['Документ 3']]
+            })
         }];
  
         this.callParent(arguments);
