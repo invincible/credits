@@ -1,0 +1,8 @@
+{
+    "success": true,
+    "credits": [
+    //'id','openDate', 'closeDate', 'term', 'summ', 'percent', 'fullSumm', 'status'
+        {"id": 1, "openDate": '14.01.2012', "closeDate": '13.04.2012', "term": 60, "summ": 90000, "percent": 7, "fullSumm": 108000, "status": 'погашен'},
+        {"id": 2, "openDate": '13.02.2012', "closeDate": '18.04.2012', "term": 10, "summ": 70000, "percent": 10, "fullSumm": 84000, "status": 'выдан'}
+    ]
+}

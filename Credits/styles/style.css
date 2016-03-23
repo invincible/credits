@@ -1,0 +1,4 @@
+.save-icon {background:transparent url(icons/save.png) center 0 no-repeat;}
+.credit-active .x-grid-cell { 
+    background-color: #ffe2e2;
+}
